@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>학교 급식 알레르기 완전 정복 — 19대 유발 식품 상세 가이드</title>
+  <meta name="description" content="학교 급식 19대 알레르기 유발 식품을 번호별로 상세 설명합니다. 증상, 주의 식품, 대체 식품 정보를 한눈에 확인하세요."/>
+  <link rel="icon" href="icon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--bg:#07090f;--bg2:#0d1020;--border:rgba(255,255,255,0.07);--text:#e8eaf0;--muted:rgba(255,255,255,0.42);--accent:#4a80f5;--gold:#f5a623;--green:#5de5a6;--red:#ff6b6b}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;line-height:1.8}
+    a{color:var(--accent);text-decoration:none}
+    nav{background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:99}
+    .nav-logo{font-size:17px;font-weight:900;background:linear-gradient(90deg,#4a80f5,#9b5de5);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .back-btn{font-size:13px;color:var(--muted);padding:7px 14px;border:1px solid var(--border);border-radius:9px;transition:.2s}
+    .back-btn:hover{color:var(--text);background:rgba(255,255,255,.06)}
+    main{max-width:860px;margin:0 auto;padding:60px 24px 80px}
+    .page-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    .page-title{font-size:clamp(24px,5vw,38px);font-weight:900;letter-spacing:-1px;margin-bottom:14px}
+    .page-desc{font-size:15px;color:var(--muted);margin-bottom:48px;max-width:620px;word-break:keep-all;line-height:1.7}
+    .warning-box{background:rgba(255,107,107,.07);border:1px solid rgba(255,107,107,.25);border-radius:14px;padding:18px 22px;margin-bottom:48px;display:flex;gap:14px;align-items:flex-start}
+    .warning-box p{font-size:14px;color:rgba(255,180,180,.8);line-height:1.7;word-break:keep-all;margin:0}
+    .section-title{font-size:22px;font-weight:900;letter-spacing:-0.5px;margin:48px 0 20px;padding-left:14px;border-left:3px solid var(--gold)}
+    .allergy-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:48px}
+    .a-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:16px;padding:20px 22px;transition:.2s}
+    .a-card:hover{background:rgba(255,255,255,.06);transform:translateY(-2px)}
+    .a-card-header{display:flex;align-items:center;gap:11px;margin-bottom:12px}
+    .a-num{background:rgba(245,166,35,.15);color:var(--gold);border-radius:8px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;flex-shrink:0}
+    .a-name{font-size:17px;font-weight:700}
+    .a-eng{font-size:11px;color:var(--muted);margin-top:1px}
+    .a-info{font-size:13px;color:var(--muted);line-height:1.7;word-break:keep-all}
+    .a-foods{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .a-food-tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:3px 9px;font-size:11px;color:rgba(255,255,255,.55)}
+    .tip-box{background:rgba(74,128,245,.07);border:1px solid rgba(74,128,245,.2);border-radius:14px;padding:20px 24px;margin:10px 0}
+    .tip-box h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--accent)}
+    .tip-box p,.tip-box li{font-size:14px;color:var(--muted);line-height:1.8;word-break:keep-all}
+    .tip-box ul{margin:8px 0 0 18px}
+    .emergency-box{background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.3);border-radius:14px;padding:24px;margin:32px 0}
+    .emergency-box h3{font-size:17px;font-weight:900;color:var(--red);margin-bottom:12px}
+    .emergency-box p,.emergency-box li{font-size:14px;color:rgba(255,200,200,.75);line-height:1.8;word-break:keep-all}
+    .emergency-box ul{margin:8px 0 0 18px}
+    table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+    th{background:rgba(255,255,255,.05);color:var(--muted);text-align:left;padding:12px 16px;font-size:12px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+    td{padding:12px 16px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;line-height:1.7;word-break:keep-all}
+    td:first-child{color:var(--text);font-weight:600}
+    footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;font-size:12px;color:rgba(255,255,255,.2)}
+    footer a{color:rgba(255,255,255,.35)}
+  </style>
+</head>
+<body>
+<nav>
+  <span class="nav-logo">🍱 학교급식 포털</span>
+  <a href="index.html" class="back-btn">← 홈으로</a>
+</nav>
+
+<main>
+  <div class="page-label">알레르기 가이드</div>
+  <h1 class="page-title">학교 급식<br>알레르기 완전 정복 가이드</h1>
+  <p class="page-desc">식품의약품안전처가 지정한 19대 알레르기 유발 식품을 번호별로 상세히 알아봅니다. 급식 메뉴 옆 숫자가 무엇을 의미하는지 정확히 파악해 건강하고 안전한 급식을 즐기세요.</p>
+
+  <div class="warning-box">
+    <span style="font-size:28px;flex-shrink:0">⚠️</span>
+    <p><strong style="color:var(--red)">중요 안내:</strong> 이 페이지는 일반적인 정보 제공을 목적으로 합니다. 알레르기가 있는 학생은 반드시 보호자, 담임 교사, 학교 영양 교사에게 알레르기 정보를 사전에 전달하고, 식단을 함께 확인해 주세요. 심각한 알레르기 반응은 응급 상황을 유발할 수 있습니다.</p>
+  </div>
+
+  <!-- 19 ALLERGY CARDS -->
+  <h2 class="section-title">19대 알레르기 유발 식품 상세 정보</h2>
+  <div class="allergy-cards">
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">1</div>
+        <div><div class="a-name">🥚 난류 (달걀)</div><div class="a-eng">Egg</div></div>
+      </div>
+      <div class="a-info">달걀 흰자의 단백질(오보알부민)이 주요 알레르겐입니다. 어린이 식품 알레르기 중 가장 흔한 원인 중 하나입니다.</div>
+      <div class="a-foods"><span class="a-food-tag">달걀말이</span><span class="a-food-tag">계란후라이</span><span class="a-food-tag">마요네즈</span><span class="a-food-tag">케이크</span><span class="a-food-tag">빵류</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">2</div>
+        <div><div class="a-name">🥛 우유</div><div class="a-eng">Milk</div></div>
+      </div>
+      <div class="a-info">우유 단백질(카세인, 유청)에 대한 알레르기로, 유당불내증과는 다릅니다. 알레르기인 경우 소량으로도 심각한 반응이 올 수 있습니다.</div>
+      <div class="a-foods"><span class="a-food-tag">급식 우유</span><span class="a-food-tag">치즈</span><span class="a-food-tag">버터</span><span class="a-food-tag">크림소스</span><span class="a-food-tag">요구르트</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">3</div>
+        <div><div class="a-name">🌿 메밀</div><div class="a-eng">Buckwheat</div></div>
+      </div>
+      <div class="a-info">한국에서 특히 주의가 필요한 알레르겐입니다. 메밀국수, 냉면 등에 포함되며 아나필락시스를 유발할 수 있습니다.</div>
+      <div class="a-foods"><span class="a-food-tag">메밀국수</span><span class="a-food-tag">냉면(일부)</span><span class="a-food-tag">메밀빵</span><span class="a-food-tag">막국수</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">4</div>
+        <div><div class="a-name">🥜 땅콩</div><div class="a-eng">Peanut</div></div>
+      </div>
+      <div class="a-info">전 세계에서 가장 심각한 식품 알레르기 중 하나입니다. 극소량으로도 아나필락시스가 발생할 수 있어 각별한 주의가 필요합니다.</div>
+      <div class="a-foods"><span class="a-food-tag">땅콩버터</span><span class="a-food-tag">견과류 혼합</span><span class="a-food-tag">일부 소스류</span><span class="a-food-tag">땅콩조림</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">5</div>
+        <div><div class="a-name">🫘 대두 (콩)</div><div class="a-eng">Soybean</div></div>
+      </div>
+      <div class="a-info">한식의 기본 식재료인 콩을 사용한 모든 식품에 포함됩니다. 된장, 간장 등 발효 식품을 통해서도 노출될 수 있습니다.</div>
+      <div class="a-foods"><span class="a-food-tag">두부</span><span class="a-food-tag">된장국</span><span class="a-food-tag">콩나물</span><span class="a-food-tag">간장</span><span class="a-food-tag">두유</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">6</div>
+        <div><div class="a-name">🌾 밀</div><div class="a-eng">Wheat</div></div>
+      </div>
+      <div class="a-info">글루텐이 주요 알레르겐입니다. 빵, 면류, 튀김옷 등 매우 다양한 식품에 포함되어 회피하기 어렵습니다.</div>
+      <div class="a-foods"><span class="a-food-tag">면류</span><span class="a-food-tag">빵</span><span class="a-food-tag">튀김</span><span class="a-food-tag">과자</span><span class="a-food-tag">간장(일부)</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">7</div>
+        <div><div class="a-name">🐟 고등어</div><div class="a-eng">Mackerel</div></div>
+      </div>
+      <div class="a-info">등푸른 생선에 대한 알레르기입니다. 히스타민이 풍부하게 함유되어 있어 두드러기, 홍조 등의 반응이 나타날 수 있습니다.</div>
+      <div class="a-foods"><span class="a-food-tag">고등어구이</span><span class="a-food-tag">고등어조림</span><span class="a-food-tag">고등어통조림</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">8</div>
+        <div><div class="a-name">🦀 게</div><div class="a-eng">Crab</div></div>
+      </div>
+      <div class="a-info">갑각류 알레르기의 대표 식품입니다. 게를 직접 먹지 않아도 국물이나 소스에 들어있는 경우에도 반응이 올 수 있습니다.</div>
+      <div class="a-foods"><span class="a-food-tag">꽃게탕</span><span class="a-food-tag">게살</span><span class="a-food-tag">크래미(일부)</span><span class="a-food-tag">해물찜</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">9</div>
+        <div><div class="a-name">🦐 새우</div><div class="a-eng">Shrimp</div></div>
+      </div>
+      <div class="a-info">갑각류 알레르기로 게 알레르기와 함께 나타나는 경우가 많습니다. 건새우가 들어간 국물에도 주의해야 합니다.</div>
+      <div class="a-foods"><span class="a-food-tag">새우볶음</span><span class="a-food-tag">건새우</span><span class="a-food-tag">새우젓</span><span class="a-food-tag">해물요리</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">10</div>
+        <div><div class="a-name">🐷 돼지고기</div><div class="a-eng">Pork</div></div>
+      </div>
+      <div class="a-info">돼지고기 단백질에 대한 알레르기입니다. 국내 학교 급식에서 자주 사용되는 식재료로, 제육볶음·돈가스 등에 주의해야 합니다.</div>
+      <div class="a-foods"><span class="a-food-tag">제육볶음</span><span class="a-food-tag">돈가스</span><span class="a-food-tag">삼겹살</span><span class="a-food-tag">햄</span><span class="a-food-tag">소시지</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">11</div>
+        <div><div class="a-name">🍑 복숭아</div><div class="a-eng">Peach</div></div>
+      </div>
+      <div class="a-info">핵과류 알레르기입니다. 복숭아 껍질에 알레르겐 농도가 높습니다. 국내에서 비교적 빈도가 높은 과일 알레르기입니다.</div>
+      <div class="a-foods"><span class="a-food-tag">복숭아 후식</span><span class="a-food-tag">복숭아 음료</span><span class="a-food-tag">과일 통조림</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">12</div>
+        <div><div class="a-name">🍅 토마토</div><div class="a-eng">Tomato</div></div>
+      </div>
+      <div class="a-info">토마토의 단백질과 히스타민이 알레르겐으로 작용합니다. 케첩, 토마토소스 등 가공 형태에서도 반응이 올 수 있습니다.</div>
+      <div class="a-foods"><span class="a-food-tag">토마토샐러드</span><span class="a-food-tag">케첩</span><span class="a-food-tag">피자소스</span><span class="a-food-tag">스파게티</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">13</div>
+        <div><div class="a-name">🍷 아황산류</div><div class="a-eng">Sulfites</div></div>
+      </div>
+      <div class="a-info">식품 보존제로 사용되는 이산화황(SO₂)과 아황산염류입니다. 주로 천식이 있는 경우 과민 반응이 나타납니다.</div>
+      <div class="a-foods"><span class="a-food-tag">건포도</span><span class="a-food-tag">말린과일</span><span class="a-food-tag">일부 음료</span><span class="a-food-tag">냉동새우(일부)</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">14</div>
+        <div><div class="a-name">🪨 호두</div><div class="a-eng">Walnut</div></div>
+      </div>
+      <div class="a-info">견과류 알레르기 중 심각한 반응을 일으키는 식품입니다. 호두를 사용한 과자나 빵에도 주의가 필요합니다.</div>
+      <div class="a-foods"><span class="a-food-tag">호두과자</span><span class="a-food-tag">견과류 샐러드</span><span class="a-food-tag">호두빵</span><span class="a-food-tag">견과류 혼합</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">15</div>
+        <div><div class="a-name">🍗 닭고기</div><div class="a-eng">Chicken</div></div>
+      </div>
+      <div class="a-info">닭고기 단백질에 대한 알레르기입니다. 달걀 알레르기와 교차반응이 나타나는 경우도 있습니다.</div>
+      <div class="a-foods"><span class="a-food-tag">닭볶음탕</span><span class="a-food-tag">치킨</span><span class="a-food-tag">닭갈비</span><span class="a-food-tag">닭국</span><span class="a-food-tag">닭튀김</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">16</div>
+        <div><div class="a-name">🥩 쇠고기</div><div class="a-eng">Beef</div></div>
+      </div>
+      <div class="a-info">쇠고기 단백질(알파-갈)에 대한 알레르기입니다. 미역국·불고기·소고기국 등 한국 급식에서 자주 접하는 식재료입니다.</div>
+      <div class="a-foods"><span class="a-food-tag">불고기</span><span class="a-food-tag">소고기국</span><span class="a-food-tag">미역국</span><span class="a-food-tag">스테이크</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">17</div>
+        <div><div class="a-name">🦑 오징어</div><div class="a-eng">Squid</div></div>
+      </div>
+      <div class="a-info">연체류 알레르기입니다. 오징어채, 마른오징어 등 건조 및 가공 형태에서도 알레르겐이 유지됩니다.</div>
+      <div class="a-foods"><span class="a-food-tag">오징어볶음</span><span class="a-food-tag">오징어채</span><span class="a-food-tag">해물찜</span><span class="a-food-tag">오징어튀김</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">18</div>
+        <div><div class="a-name">🐚 조개류</div><div class="a-eng">Shellfish</div></div>
+      </div>
+      <div class="a-info">굴, 홍합, 꼬막, 바지락 등 조개류 전체에 해당합니다. 국물 요리에도 조개 성분이 들어갈 수 있어 주의가 필요합니다.</div>
+      <div class="a-foods"><span class="a-food-tag">바지락국</span><span class="a-food-tag">홍합탕</span><span class="a-food-tag">꼬막무침</span><span class="a-food-tag">굴국밥</span></div>
+    </div>
+
+    <div class="a-card">
+      <div class="a-card-header">
+        <div class="a-num">19</div>
+        <div><div class="a-name">🌲 잣</div><div class="a-eng">Pine nut</div></div>
+      </div>
+      <div class="a-info">견과류의 일종으로, 잣죽·잣소스 등에 사용됩니다. 다른 견과류 알레르기가 있는 경우 교차반응 가능성이 있습니다.</div>
+      <div class="a-foods"><span class="a-food-tag">잣죽</span><span class="a-food-tag">잣 드레싱</span><span class="a-food-tag">한과류</span><span class="a-food-tag">일부 나물</span></div>
+    </div>
+
+  </div>
+
+  <!-- HOW TO READ -->
+  <h2 class="section-title">급식표에서 알레르기 번호 읽는 법</h2>
+  <div class="tip-box">
+    <h3>📋 예시: 닭갈비(5.6.9.15)</h3>
+    <ul>
+      <li>5 → 대두 (간장 등 포함)</li>
+      <li>6 → 밀 (양념 밀가루)</li>
+      <li>9 → 새우 (새우젓 포함)</li>
+      <li>15 → 닭고기</li>
+    </ul>
+    <p style="margin-top:10px">알레르기가 있는 번호가 메뉴 옆에 표시된 경우, 해당 메뉴 섭취를 자제하거나 영양 교사에게 대체 식품을 요청하세요.</p>
+  </div>
+
+  <!-- CROSS REACTION -->
+  <h2 class="section-title">교차 반응 주의 조합</h2>
+  <table>
+    <thead>
+      <tr><th>알레르기</th><th>교차 반응 가능 식품</th><th>설명</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>달걀(1)</td><td>닭고기(15)</td><td>달걀과 닭고기 단백질 간 유사성으로 교차반응이 나타날 수 있습니다.</td></tr>
+      <tr><td>게(8)</td><td>새우(9), 조개류(18)</td><td>갑각류·연체류 알레르기는 동반되는 경우가 많습니다.</td></tr>
+      <tr><td>땅콩(4)</td><td>호두(14), 잣(19)</td><td>견과류 알레르기는 여러 종류에 동시에 반응하는 경우가 있습니다.</td></tr>
+      <tr><td>우유(2)</td><td>쇠고기(16)</td><td>우유 단백질과 쇠고기 단백질 간 소량의 교차반응이 보고됩니다.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- EMERGENCY -->
+  <div class="emergency-box">
+    <h3>🚨 아나필락시스(응급 알레르기) 대처법</h3>
+    <p><strong style="color:#ff8a8a">다음 증상이 나타나면 즉시 119에 신고하세요:</strong></p>
+    <ul>
+      <li>갑작스러운 온몸 두드러기, 얼굴·목 부위 부종</li>
+      <li>목이 조이는 느낌, 호흡 곤란, 쌕쌕거리는 숨소리</li>
+      <li>급격한 혈압 저하, 어지럼증, 의식 저하</li>
+      <li>구토, 복통과 함께 피부 반응이 동시에 나타날 때</li>
+    </ul>
+    <p style="margin-top:12px">에피네프린 자가주사기(에피펜)를 처방받은 학생은 항상 학교에 여분을 보관하고, 담임 교사와 보건 교사가 위치를 알 수 있도록 안내하세요.</p>
+  </div>
+
+  <div style="text-align:center; margin-top:48px">
+    <a href="app.html" style="display:inline-block; background:linear-gradient(135deg,#4a80f5,#9b5de5); color:#fff; padding:14px 30px; border-radius:12px; font-weight:700; font-size:15px;">🍽️ 오늘의 급식 알레르기 확인하러 가기</a>
+  </div>
+</main>
+
+<footer>
+  <a href="index.html">홈</a> &nbsp;|&nbsp; <a href="app.html">오늘의 급식</a> &nbsp;|&nbsp; <a href="nutrition.html">영양 가이드</a> &nbsp;|&nbsp; <a href="privacy.html">개인정보처리방침</a>
+</footer>
+</body>
+</html>

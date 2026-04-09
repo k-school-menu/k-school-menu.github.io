@@ -1,38 +1,582 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>청소년기 영양 관리 및 급식 가이드라인</title>
-    <style>
-        body { font-family: 'Pretendard', sans-serif; line-height: 1.8; padding: 40px 20px; max-width: 800px; margin: 0 auto; color: #333; }
-        h1 { color: #4a80f5; border-bottom: 2px solid #4a80f5; padding-bottom: 10px; }
-        h2 { color: #222; margin-top: 30px; }
-        p { margin-bottom: 15px; text-align: justify; }
-    </style>
-</head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>학교 급식 정보 포털 — 오늘의 급식·영양·알레르기 완전 가이드</title>
+  <meta name="description" content="전국 초·중·고 학교 급식 정보를 한눈에. 오늘의 식단, 알레르기 유발 식품, 청소년 영양 가이드까지 제공하는 학교 급식 종합 포털입니다."/>
+  <meta name="keywords" content="학교급식, 오늘의급식, 급식메뉴, 알레르기, 학교식단, 영양정보, NEIS"/>
+  <link rel="icon" href="icon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #07090f;
+      --bg2: #0d1020;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eaf0;
+      --text-muted: rgba(255,255,255,0.38);
+      --text-dim: rgba(255,255,255,0.18);
+      --accent: #4a80f5;
+      --accent2: #9b5de5;
+      --green: #5de5a6;
+      --gold: #f5a623;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      line-height: 1.8;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(7,9,15,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 58px;
+    }
+    .nav-logo {
+      font-size: 17px; font-weight: 900;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 6px; }
+    .nav-links a {
+      font-size: 13px; color: var(--text-muted); padding: 6px 12px;
+      border-radius: 8px; transition: .2s;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,.06); text-decoration: none; }
+    .nav-cta {
+      background: var(--accent); color: #fff !important;
+      border-radius: 9px; padding: 7px 16px !important;
+      font-weight: 700; font-size: 13px !important;
+    }
+    .nav-cta:hover { background: #3a6ce0 !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      max-width: 860px; margin: 0 auto;
+      padding: 80px 24px 64px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(74,128,245,.1); border: 1px solid rgba(74,128,245,.25);
+      border-radius: 100px; padding: 6px 16px;
+      font-size: 12px; color: #7aa3f7; font-weight: 600;
+      margin-bottom: 26px; letter-spacing: .5px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 6vw, 52px);
+      font-weight: 900; line-height: 1.2;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 17px; color: var(--text-muted);
+      max-width: 560px; margin: 0 auto 36px;
+      line-height: 1.7; word-break: keep-all;
+    }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; border: none; border-radius: 12px;
+      padding: 14px 28px; font-size: 16px; font-weight: 700;
+      cursor: pointer; transition: .2s;
+      box-shadow: 0 4px 24px rgba(74,128,245,.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(74,128,245,.4); }
+    .btn-secondary {
+      background: rgba(255,255,255,.06); border: 1px solid var(--border);
+      color: var(--text-muted); border-radius: 12px;
+      padding: 14px 28px; font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: .2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.1); color: var(--text); }
+
+    /* ─── STATS ─── */
+    .stats-bar {
+      background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 28px 24px;
+    }
+    .stats-inner {
+      max-width: 860px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      text-align: center;
+    }
+    .stat-num { font-size: 28px; font-weight: 900; color: var(--accent); }
+    .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; letter-spacing: .5px; }
+
+    /* ─── SECTION ─── */
+    section { max-width: 860px; margin: 0 auto; padding: 60px 24px; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(22px, 4vw, 32px); font-weight: 900;
+      letter-spacing: -1px; margin-bottom: 14px;
+    }
+    .section-desc { font-size: 15px; color: var(--text-muted); margin-bottom: 40px; word-break: keep-all; }
+    .divider { border: none; border-top: 1px solid var(--border); max-width: 860px; margin: 0 auto; }
+
+    /* ─── FEATURE CARDS ─── */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+    .card {
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+      transition: .2s;
+    }
+    .card:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); transform: translateY(-3px); }
+    .card-icon { font-size: 32px; margin-bottom: 14px; }
+    .card-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; word-break: keep-all; }
+
+    /* ─── ALLERGY TABLE ─── */
+    .allergy-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px;
+      margin: 28px 0;
+    }
+    .allergy-item {
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 14px;
+      display: flex; align-items: center; gap: 9px;
+    }
+    .allergy-num {
+      background: rgba(245,166,35,.15); color: var(--gold);
+      border-radius: 5px; width: 22px; height: 22px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; flex-shrink: 0;
+    }
+    .allergy-name { font-size: 13px; font-weight: 600; }
+
+    /* ─── NUTRITION TABLE ─── */
+    .nut-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .nut-table th {
+      background: rgba(74,128,245,.12); color: var(--accent);
+      font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+      padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border);
+    }
+    .nut-table td {
+      padding: 13px 16px; font-size: 14px; color: var(--text-muted);
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      vertical-align: top; line-height: 1.6; word-break: keep-all;
+    }
+    .nut-table tr:hover td { background: rgba(255,255,255,.02); }
+    .nut-table td:first-child { color: var(--text); font-weight: 600; width: 90px; }
+
+    /* ─── TIPS ─── */
+    .tips { display: flex; flex-direction: column; gap: 14px; }
+    .tip {
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 22px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .tip-emoji { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+    .tip-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; word-break: keep-all; }
+    .tip-text strong { color: var(--text); }
+
+    /* ─── HOW TO USE ─── */
+    .steps { display: flex; flex-direction: column; gap: 20px; }
+    .step { display: flex; gap: 18px; align-items: flex-start; }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 900; color: #fff;
+      box-shadow: 0 4px 16px rgba(74,128,245,.3);
+    }
+    .step-content {}
+    .step-title { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+    .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; word-break: keep-all; }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(74,128,245,.12), rgba(155,93,229,.12));
+      border: 1px solid rgba(74,128,245,.2);
+      border-radius: 20px; padding: 48px 32px; text-align: center;
+      margin: 0 0 60px;
+    }
+    .cta-banner h2 { font-size: 26px; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.5px; }
+    .cta-banner p { color: var(--text-muted); margin-bottom: 28px; font-size: 15px; }
+
+    /* ─── FAQ ─── */
+    .faq { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .faq-q {
+      padding: 18px 22px; font-size: 15px; font-weight: 700;
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      user-select: none;
+    }
+    .faq-q::after { content: '＋'; color: var(--text-muted); font-size: 18px; }
+    .faq-q.open::after { content: '－'; color: var(--accent); }
+    .faq-a {
+      display: none; padding: 0 22px 18px;
+      font-size: 14px; color: var(--text-muted);
+      line-height: 1.8; word-break: keep-all; border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    /* ─── LINK CARDS ─── */
+    .link-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .link-card {
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px;
+      display: flex; flex-direction: column; gap: 8px;
+      transition: .2s;
+    }
+    .link-card:hover { background: rgba(255,255,255,.07); transform: translateY(-2px); text-decoration: none; }
+    .link-card-emoji { font-size: 28px; }
+    .link-card-title { font-size: 15px; font-weight: 700; color: var(--text); }
+    .link-card-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; word-break: keep-all; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 24px; text-align: center;
+      font-size: 12px; color: var(--text-dim);
+      line-height: 2;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .stats-inner { grid-template-columns: repeat(3,1fr); }
+      .nav-links .hide-mobile { display: none; }
+    }
+  </style>
 </head>
 <body>
-<a href="app.html" style="display:block; padding:20px; background:#4a80f5; color:white; text-align:center; text-decoration:none; font-size:20px; font-weight:bold; border-radius:10px; margin-bottom:30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    🍱 오늘의 급식 보러 가기 (클릭)
-</a>
 
-    <h1>청소년기 영양 관리와 학교 급식의 중요성</h1>
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">🍱 학교급식 포털</span>
+  <div class="nav-links">
+    <a href="#allergy" class="hide-mobile">알레르기</a>
+    <a href="#nutrition" class="hide-mobile">영양정보</a>
+    <a href="#faq" class="hide-mobile">FAQ</a>
+    <a href="app.html" class="nav-cta">오늘의 급식 →</a>
+  </div>
+</nav>
 
-    <h2>1. 청소년기 신체 발달과 영양소의 역할</h2>
-    <p>청소년기는 생애 주기 중 신체적, 정신적 성장이 가장 급격하게 일어나는 시기입니다. 이 시기의 영양 상태는 평생의 건강을 좌우하는 중요한 밑거름이 됩니다. 특히 뼈와 근육의 성장이 극대화되므로 칼슘, 단백질, 철분 등의 필수 영양소 섭취가 그 어느 때보다 중요합니다. 규칙적이고 균형 잡힌 식사는 학업 스트레스를 견뎌낼 수 있는 체력의 바탕이 되며, 정서적 안정감에도 직접적인 영향을 미칩니다.</p>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🇰🇷 NEIS 교육행정정보시스템 연동</div>
+  <h1>우리 학교<br><span>오늘의 급식</span>을<br>바로 확인하세요</h1>
+  <p>전국 초·중·고등학교의 급식 식단표, 알레르기 정보, 열량까지 실시간으로 제공합니다. 학부모도, 학생도 한눈에 확인.</p>
+  <div class="hero-btns">
+    <a href="app.html"><button class="btn-primary">🍽️ 오늘의 급식 바로 보기</button></a>
+    <a href="#how-to"><button class="btn-secondary">이용 방법 알아보기</button></a>
+  </div>
+</div>
 
-    <h2>2. 올바른 식습관 형성을 위한 가이드라인</h2>
-    <p>현대 청소년들은 학업으로 인한 바쁜 일정, 인스턴트 식품의 발달 등으로 인해 영양 불균형에 노출되기 쉽습니다. 아침 결식률이 높아지고, 고열량 저영양 식품의 섭취가 늘어나면서 비만 및 각종 대사 증후군의 위험이 증가하고 있습니다. 이를 예방하기 위해서는 하루 세 끼를 규칙적으로 섭취하고, 다양한 채소와 과일을 통해 비타민과 무기질을 보충해야 합니다. 또한, 충분한 수분 섭취와 함께 당류가 과다하게 포함된 탄산음료의 섭취를 줄이는 노력이 필요합니다.</p>
-
-    <h2>3. 학교 급식의 교육적 가치와 안전 관리</h2>
-    <p>학교 급식은 단순히 한 끼의 식사를 해결하는 것을 넘어, 학생들에게 올바른 식생활을 가르치는 중요한 '교육의 연장선'입니다. 영양 교사와 조리 종사자들의 철저한 위생 관리와 영양 설계를 통해 제공되는 급식은 학생들이 건강한 맛을 경험하고 편식을 교정할 수 있는 최고의 기회입니다. 더불어, 알레르기 유발 물질에 대한 정확한 정보 제공을 통해 모든 학생이 안전하게 식사할 수 있는 환경을 조성하는 것이 학교 급식 시스템의 핵심 가치입니다.</p>
-
-    <h2>4. 본 애플리케이션의 목표와 비전</h2>
-    <p>우리 학교 급식 애플리케이션은 이러한 교육적 철학을 바탕으로 개발되었습니다. 매일 업데이트되는 식단 정보와 알레르기 유의 사항을 투명하게 제공하여 학생들의 건강권을 보장합니다. 나아가 '오늘의 영양 한 줄'과 '따뜻한 명언'을 함께 제공함으로써, 신체적 건강뿐만 아니라 학업에 지친 청소년들의 마음까지 위로하는 종합적인 웰니스(Wellness) 플랫폼으로 기능하고자 합니다. 지속적인 데이터 업데이트와 사용자 경험 개선을 통해 학생들의 가장 가까운 건강 도우미가 되겠습니다.</p>
-    
-    <div style="margin-top: 50px; text-align: center;">
-        <a href="index.html" style="color: #4a80f5; text-decoration: none; font-weight: bold;">← 메인 급식 화면으로 돌아가기</a>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">11,900+</div>
+      <div class="stat-label">전국 등록 학교 수</div>
     </div>
+    <div>
+      <div class="stat-num">19종</div>
+      <div class="stat-label">알레르기 유발 식품</div>
+    </div>
+    <div>
+      <div class="stat-num">무료</div>
+      <div class="stat-label">완전 무료 서비스</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section>
+  <div class="section-label">주요 기능</div>
+  <h2 class="section-title">급식 정보, 이렇게 확인하세요</h2>
+  <p class="section-desc">복잡한 설치 없이 웹 브라우저만으로 모든 기능을 이용할 수 있습니다.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <div class="card-title">전국 학교 검색</div>
+      <div class="card-desc">학교 이름 일부만 입력해도 전국 초·중·고등학교를 빠르게 찾아 등록할 수 있습니다.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <div class="card-title">날짜별 식단 조회</div>
+      <div class="card-desc">오늘뿐 아니라 원하는 날짜를 자유롭게 선택해 아침·점심·저녁 식단을 확인할 수 있습니다.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚠️</div>
+      <div class="card-title">알레르기 정보 제공</div>
+      <div class="card-desc">각 메뉴마다 알레르기 유발 식품 번호를 표시해, 알레르기가 있는 학생도 안전하게 이용할 수 있습니다.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔥</div>
+      <div class="card-title">열량 정보 표시</div>
+      <div class="card-desc">식단의 총 열량(kcal)을 함께 제공해 건강한 식습관 관리를 도와드립니다.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">💡</div>
+      <div class="card-title">오늘의 영양 팁</div>
+      <div class="card-desc">매일 달라지는 200개 이상의 영양 지식을 통해 올바른 식생활을 배울 수 있습니다.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <div class="card-title">오늘의 명언</div>
+      <div class="card-desc">매일 새로운 위인들의 명언을 통해 학업에 지친 청소년들에게 따뜻한 위로를 전합니다.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- HOW TO USE -->
+<section id="how-to">
+  <div class="section-label">이용 방법</div>
+  <h2 class="section-title">딱 3단계, 30초면 충분해요</h2>
+  <p class="section-desc">복잡한 회원가입 없이 바로 이용할 수 있습니다.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">오늘의 급식 버튼 클릭</div>
+        <div class="step-desc">상단 또는 아래의 '오늘의 급식 바로 보기' 버튼을 눌러 급식 앱 화면으로 이동합니다.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">우리 학교 검색 및 등록</div>
+        <div class="step-desc">우측 상단의 '🏫 우리 학교 설정하기' 버튼을 눌러 학교 이름을 검색합니다. 한 번만 등록하면 다음 방문부터는 자동으로 불러옵니다.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">오늘의 급식 확인!</div>
+        <div class="step-desc">아침·점심·저녁 탭을 선택해 원하는 식단을 확인하세요. 날짜 버튼으로 과거나 미래 식단도 조회할 수 있습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ALLERGY -->
+<section id="allergy">
+  <div class="section-label">알레르기 정보</div>
+  <h2 class="section-title">학교 급식 19대 알레르기 유발 식품</h2>
+  <p class="section-desc">식품의약품안전처 지정 알레르기 유발 식품입니다. 급식 메뉴 옆에 표시된 번호로 성분을 확인할 수 있습니다.</p>
+
+  <div class="allergy-grid">
+    <div class="allergy-item"><div class="allergy-num">1</div><div class="allergy-name">난류 🥚</div></div>
+    <div class="allergy-item"><div class="allergy-num">2</div><div class="allergy-name">우유 🥛</div></div>
+    <div class="allergy-item"><div class="allergy-num">3</div><div class="allergy-name">메밀</div></div>
+    <div class="allergy-item"><div class="allergy-num">4</div><div class="allergy-name">땅콩 🥜</div></div>
+    <div class="allergy-item"><div class="allergy-num">5</div><div class="allergy-name">대두(콩)</div></div>
+    <div class="allergy-item"><div class="allergy-num">6</div><div class="allergy-name">밀 🌾</div></div>
+    <div class="allergy-item"><div class="allergy-num">7</div><div class="allergy-name">고등어 🐟</div></div>
+    <div class="allergy-item"><div class="allergy-num">8</div><div class="allergy-name">게 🦀</div></div>
+    <div class="allergy-item"><div class="allergy-num">9</div><div class="allergy-name">새우 🦐</div></div>
+    <div class="allergy-item"><div class="allergy-num">10</div><div class="allergy-name">돼지고기 🐷</div></div>
+    <div class="allergy-item"><div class="allergy-num">11</div><div class="allergy-name">복숭아 🍑</div></div>
+    <div class="allergy-item"><div class="allergy-num">12</div><div class="allergy-name">토마토 🍅</div></div>
+    <div class="allergy-item"><div class="allergy-num">13</div><div class="allergy-name">아황산류</div></div>
+    <div class="allergy-item"><div class="allergy-num">14</div><div class="allergy-name">호두 🪨</div></div>
+    <div class="allergy-item"><div class="allergy-num">15</div><div class="allergy-name">닭고기 🍗</div></div>
+    <div class="allergy-item"><div class="allergy-num">16</div><div class="allergy-name">쇠고기 🥩</div></div>
+    <div class="allergy-item"><div class="allergy-num">17</div><div class="allergy-name">오징어 🦑</div></div>
+    <div class="allergy-item"><div class="allergy-num">18</div><div class="allergy-name">조개류 🐚</div></div>
+    <div class="allergy-item"><div class="allergy-num">19</div><div class="allergy-name">잣</div></div>
+  </div>
+
+  <div class="tip" style="margin-top:8px; border-color: rgba(245,166,35,.2); background: rgba(245,166,35,.05);">
+    <div class="tip-emoji">⚠️</div>
+    <div class="tip-text"><strong>중요:</strong> 알레르기가 있는 학생은 급식을 먹기 전에 반드시 보호자와 함께 성분을 확인하고, 담임 선생님 및 영양 교사에게 알레르기 정보를 미리 알려두세요. 심각한 알레르기 반응(아나필락시스)은 생명을 위협할 수 있습니다.</div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- NUTRITION -->
+<section id="nutrition">
+  <div class="section-label">청소년 영양 정보</div>
+  <h2 class="section-title">성장기에 꼭 필요한 영양소 가이드</h2>
+  <p class="section-desc">청소년기는 평생 건강을 좌우하는 중요한 시기입니다. 학교 급식을 통해 어떤 영양소를 얻을 수 있는지 알아보세요.</p>
+
+  <table class="nut-table">
+    <thead>
+      <tr>
+        <th>영양소</th>
+        <th>주요 역할</th>
+        <th>급식에서 만나는 식품</th>
+        <th>청소년 1일 권장량</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>칼슘</td>
+        <td>뼈와 치아 형성, 성장판 발달에 필수. 부족하면 키 성장이 둔화될 수 있습니다.</td>
+        <td>우유, 치즈, 멸치볶음, 두부, 시금치</td>
+        <td>900mg (중학생 기준)</td>
+      </tr>
+      <tr>
+        <td>단백질</td>
+        <td>근육·장기·효소 구성. 면역력 유지와 두뇌 발달에도 필수적입니다.</td>
+        <td>닭고기, 소고기, 돼지고기, 생선, 달걀, 콩류</td>
+        <td>55~65g</td>
+      </tr>
+      <tr>
+        <td>철분</td>
+        <td>적혈구 생성, 빈혈 예방. 여학생은 특히 주의가 필요합니다.</td>
+        <td>소고기, 시금치, 깻잎, 두부, 조개류</td>
+        <td>14~16mg</td>
+      </tr>
+      <tr>
+        <td>비타민D</td>
+        <td>칼슘 흡수 촉진, 면역 기능 강화. 실내 생활이 많은 학생에게 부족하기 쉽습니다.</td>
+        <td>고등어, 연어, 달걀 노른자, 표고버섯</td>
+        <td>10μg</td>
+      </tr>
+      <tr>
+        <td>아연</td>
+        <td>성장 호르몬 분비, 상처 치유, 미각 유지에 관여합니다.</td>
+        <td>굴, 소고기, 호박씨, 참깨, 견과류</td>
+        <td>8~10mg</td>
+      </tr>
+      <tr>
+        <td>탄수화물</td>
+        <td>뇌의 유일한 직접 에너지원. 공부 집중력과 직결됩니다.</td>
+        <td>쌀밥, 잡곡밥, 고구마, 감자, 옥수수</td>
+        <td>총 에너지의 55~65%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tips">
+    <div class="tip">
+      <div class="tip-emoji">🥛</div>
+      <div class="tip-text"><strong>급식 우유는 꼭 마시세요!</strong> 성장기 칼슘 권장량(900mg/일)의 약 30%가 우유 한 팩(200ml)으로 충족됩니다. 멸치볶음도 남기지 말고 드세요.</div>
+    </div>
+    <div class="tip">
+      <div class="tip-emoji">🥬</div>
+      <div class="tip-text"><strong>채소 반찬 먼저 드세요!</strong> 식사 시작 시 채소부터 먹으면 혈당이 천천히 오르고, 식이섬유가 포만감을 높여줍니다. 식곤증 예방에도 도움이 돼요.</div>
+    </div>
+    <div class="tip">
+      <div class="tip-emoji">☕</div>
+      <div class="tip-text"><strong>청소년기 카페인은 제한하세요.</strong> 에너지드링크나 커피의 카페인은 칼슘 흡수를 방해해 키 성장에 영향을 줄 수 있습니다. 하루 1캔도 많습니다.</div>
+    </div>
+    <div class="tip">
+      <div class="tip-emoji">💧</div>
+      <div class="tip-text"><strong>하루 물 8잔 이상 마시기.</strong> 근육의 70%는 수분입니다. 탄산음료 대신 물을 자주 마시는 습관이 집중력과 체력 유지의 첫걸음입니다.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-label">자주 묻는 질문</div>
+  <h2 class="section-title">궁금한 점을 해결해 드립니다</h2>
+  <p class="section-desc">이용 중 자주 문의하시는 내용을 모았습니다.</p>
+  <div class="faq">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">급식 정보가 표시되지 않아요. 왜 그런가요?</div>
+      <div class="faq-a">해당 날짜에 급식이 없는 경우(공휴일, 방학 등)이거나, NEIS 서버에 아직 식단이 등록되지 않은 경우입니다. 식단은 보통 당일 오전에 등록되므로, 오전 일찍 접속하면 나오지 않을 수 있습니다. 또한 학교에 따라 급식을 제공하지 않는 요일이 있을 수 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">학교를 등록하면 정보가 어디에 저장되나요?</div>
+      <div class="faq-a">학교 정보는 사용자 본인의 기기(스마트폰 또는 컴퓨터)의 로컬 저장소(localStorage)에만 저장됩니다. 별도의 서버로 전송되거나 수집되지 않으며, 브라우저 데이터를 삭제하면 함께 삭제됩니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">알레르기 번호 옆에 점(.)은 무슨 의미인가요?</div>
+      <div class="faq-a">NEIS에서 제공하는 알레르기 표기 형식으로, 각 번호 사이의 구분자입니다. 예를 들어 '1.2.5'는 난류(1), 우유(2), 대두(5) 알레르기 유발 성분이 들어있다는 의미입니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">특수학교나 영양학교 급식도 조회할 수 있나요?</div>
+      <div class="faq-a">네, NEIS에 등록된 특수학교 급식 정보도 조회할 수 있습니다. 학교 검색 시 특수학교로 표시됩니다. 단, 일부 소규모 학교는 NEIS에 급식 정보를 등록하지 않는 경우도 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">바탕화면에 아이콘으로 저장할 수 있나요?</div>
+      <div class="faq-a">네! 별도의 앱 설치 없이 브라우저에서 바로 가기를 만들 수 있습니다. 스마트폰에서는 브라우저의 '홈 화면에 추가' 기능을, PC에서는 브라우저의 '사이트를 앱으로 설치' 기능을 이용하세요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">급식 데이터 출처는 어디인가요?</div>
+      <div class="faq-a">교육부 산하 한국교육학술정보원(KERIS)이 운영하는 NEIS(교육행정정보시스템) 공공 데이터 API를 사용합니다. 각 학교의 영양 교사가 직접 등록한 정식 급식 데이터입니다.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CTA BANNER -->
+<section>
+  <div class="cta-banner">
+    <h2>지금 바로 오늘의 급식을 확인하세요 🍽️</h2>
+    <p>전국 11,900개 이상의 학교 급식 정보를 무료로 제공합니다.</p>
+    <a href="app.html"><button class="btn-primary" style="font-size:17px; padding:15px 34px;">오늘의 급식 보러 가기 →</button></a>
+  </div>
+
+  <div class="section-label" style="margin-bottom:14px">관련 페이지</div>
+  <div class="link-cards">
+    <a href="app.html" class="link-card">
+      <div class="link-card-emoji">🍱</div>
+      <div class="link-card-title">오늘의 급식</div>
+      <div class="link-card-desc">학교 급식 식단표를 실시간으로 조회합니다</div>
+    </a>
+    <a href="nutrition.html" class="link-card">
+      <div class="link-card-emoji">📖</div>
+      <div class="link-card-title">영양 가이드라인</div>
+      <div class="link-card-desc">청소년기 올바른 식습관과 영양 관리법</div>
+    </a>
+    <a href="allergy.html" class="link-card">
+      <div class="link-card-emoji">⚠️</div>
+      <div class="link-card-title">알레르기 완전 정복</div>
+      <div class="link-card-desc">19대 알레르기 유발 식품 상세 가이드</div>
+    </a>
+    <a href="guide.html" class="link-card">
+      <div class="link-card-emoji">📋</div>
+      <div class="link-card-title">급식 이용 가이드</div>
+      <div class="link-card-desc">올바른 급식 이용법과 식판 예절 안내</div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom:12px; display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+    <a href="index.html">홈</a>
+    <a href="app.html">오늘의 급식</a>
+    <a href="nutrition.html">영양 가이드</a>
+    <a href="allergy.html">알레르기 정보</a>
+    <a href="guide.html">급식 이용 가이드</a>
+    <a href="privacy.html">개인정보처리방침</a>
+  </div>
+  본 서비스는 NEIS 교육행정정보시스템 공공데이터를 활용합니다.<br/>
+  급식 정보의 최종 확인은 각 학교 영양 교사에게 문의하세요.<br/>
+  <span style="color:rgba(255,255,255,.08)">© 2025 학교급식 포털. All rights reserved.</span>
+</footer>
+
+<script>
+  function toggleFaq(el) {
+    el.classList.toggle('open');
+    const a = el.nextElementSibling;
+    a.style.display = a.style.display === 'block' ? 'none' : 'block';
+  }
+</script>
 </body>
 </html>

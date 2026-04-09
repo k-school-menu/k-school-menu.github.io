@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>학교 급식 이용 가이드 — 올바른 식판 예절과 건강한 식습관</title>
+  <meta name="description" content="학교 급식을 올바르고 건강하게 이용하는 방법을 안내합니다. 식판 예절, 음식 낭비 줄이기, 균형 잡힌 식사법 등을 소개합니다."/>
+  <link rel="icon" href="icon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--bg:#07090f;--bg2:#0d1020;--border:rgba(255,255,255,0.07);--text:#e8eaf0;--muted:rgba(255,255,255,0.42);--accent:#4a80f5;--green:#5de5a6;--gold:#f5a623;--purple:#9b5de5}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;line-height:1.8}
+    a{color:var(--accent);text-decoration:none}
+    nav{background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:99}
+    .nav-logo{font-size:17px;font-weight:900;background:linear-gradient(90deg,#4a80f5,#9b5de5);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .back-btn{font-size:13px;color:var(--muted);padding:7px 14px;border:1px solid var(--border);border-radius:9px;transition:.2s}
+    .back-btn:hover{color:var(--text);background:rgba(255,255,255,.06)}
+    main{max-width:860px;margin:0 auto;padding:60px 24px 80px}
+    .page-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+    .page-title{font-size:clamp(24px,5vw,38px);font-weight:900;letter-spacing:-1px;margin-bottom:14px}
+    .page-desc{font-size:15px;color:var(--muted);margin-bottom:52px;max-width:620px;word-break:keep-all;line-height:1.7}
+    .section-title{font-size:22px;font-weight:900;letter-spacing:-0.5px;margin:56px 0 20px;padding-left:14px;border-left:3px solid var(--green)}
+    .cards-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-bottom:16px}
+    .card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:16px;padding:22px 24px;transition:.2s}
+    .card:hover{background:rgba(255,255,255,.06)}
+    .card-icon{font-size:30px;margin-bottom:12px}
+    .card-title{font-size:16px;font-weight:700;margin-bottom:8px}
+    .card-desc{font-size:13px;color:var(--muted);line-height:1.7;word-break:keep-all}
+    .tip-row{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;margin-bottom:10px}
+    .tip-row:hover{background:rgba(255,255,255,.05)}
+    .tip-emoji{font-size:22px;flex-shrink:0;margin-top:2px}
+    .tip-content strong{color:var(--text);font-size:14px;display:block;margin-bottom:4px}
+    .tip-content p{font-size:13px;color:var(--muted);line-height:1.7;word-break:keep-all;margin:0}
+    .good-bad{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+    .good{background:rgba(93,229,166,.07);border:1px solid rgba(93,229,166,.2);border-radius:14px;padding:20px}
+    .bad{background:rgba(255,107,107,.07);border:1px solid rgba(255,107,107,.2);border-radius:14px;padding:20px}
+    .good h3{color:var(--green);font-size:14px;font-weight:700;margin-bottom:12px}
+    .bad h3{color:#ff8a8a;font-size:14px;font-weight:700;margin-bottom:12px}
+    .good li,.bad li{font-size:13px;color:var(--muted);margin-left:16px;line-height:1.8;word-break:keep-all}
+    .highlight-box{background:linear-gradient(135deg,rgba(74,128,245,.1),rgba(155,93,229,.1));border:1px solid rgba(74,128,245,.2);border-radius:16px;padding:24px 28px;margin:24px 0}
+    .highlight-box h3{font-size:16px;font-weight:700;margin-bottom:12px;color:var(--accent)}
+    .highlight-box p,.highlight-box li{font-size:14px;color:var(--muted);line-height:1.8;word-break:keep-all}
+    .highlight-box ul{margin:8px 0 0 18px}
+    table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+    th{background:rgba(255,255,255,.05);color:var(--muted);text-align:left;padding:12px 16px;font-size:12px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+    td{padding:12px 16px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;line-height:1.7;word-break:keep-all}
+    td:first-child{color:var(--text);font-weight:600;width:120px}
+    .num-list{counter-reset:num;list-style:none}
+    .num-list li{counter-increment:num;position:relative;padding-left:32px;margin-bottom:12px;font-size:14px;color:var(--muted);line-height:1.7;word-break:keep-all}
+    .num-list li::before{content:counter(num);position:absolute;left:0;top:2px;width:22px;height:22px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff}
+    footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;font-size:12px;color:rgba(255,255,255,.2)}
+    footer a{color:rgba(255,255,255,.35)}
+    @media(max-width:500px){.good-bad{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav>
+  <span class="nav-logo">🍱 학교급식 포털</span>
+  <a href="index.html" class="back-btn">← 홈으로</a>
+</nav>
+
+<main>
+  <div class="page-label">급식 이용 가이드</div>
+  <h1 class="page-title">올바른 학교 급식<br>이용 가이드</h1>
+  <p class="page-desc">학교 급식은 단순한 한 끼 식사를 넘어 균형 잡힌 영양 섭취와 올바른 식습관을 기르는 교육의 장입니다. 건강한 급식 문화를 함께 만들어 가요.</p>
+
+  <!-- 기본 에티켓 -->
+  <h2 class="section-title">식판 예절과 기본 에티켓</h2>
+  <div class="cards-2">
+    <div class="card">
+      <div class="card-icon">🤲</div>
+      <div class="card-title">식사 전 손 씻기</div>
+      <div class="card-desc">급식을 받기 전 반드시 비누로 30초 이상 손을 씻으세요. 손 씻기는 식중독의 70%를 예방하는 가장 효과적인 방법입니다.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🍽️</div>
+      <div class="card-title">식판 올바르게 들기</div>
+      <div class="card-desc">식판은 양손으로 수평을 유지해 들고 이동하세요. 한 손으로 기울여 들면 국물이 흘러 화상의 위험이 있습니다.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🪑</div>
+      <div class="card-title">차례대로 줄 서기</div>
+      <div class="card-desc">급식 배식대 앞에서는 새치기 없이 차례를 지켜주세요. 모든 학생이 여유롭게 식사할 수 있는 급식실 문화를 만들어요.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🙏</div>
+      <div class="card-title">조리 선생님께 감사 인사</div>
+      <div class="card-desc">매일 새벽부터 준비하시는 급식 조리사·영양 교사 선생님께 "잘 먹겠습니다", "잘 먹었습니다" 인사를 드려요.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔇</div>
+      <div class="card-title">조용하고 바른 자세로 식사</div>
+      <div class="card-desc">식사 중 큰 소리로 떠들거나 돌아다니지 마세요. 꼭꼭 씹어 먹는 습관은 소화를 도와주고 과식을 예방합니다.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">♻️</div>
+      <div class="card-title">잔반 분리 배출</div>
+      <div class="card-desc">음식물 쓰레기는 정해진 잔반 통에 분리 배출하고 식판과 수저를 제자리에 반납해 주세요. 환경 보호의 첫걸음입니다.</div>
+    </div>
+  </div>
+
+  <!-- 건강한 식사법 -->
+  <h2 class="section-title">건강한 급식 섭취 순서</h2>
+  <ul class="num-list">
+    <li><strong style="color:var(--text)">채소 반찬 먼저</strong> — 식이섬유가 풍부한 채소 반찬을 먼저 먹으면 혈당이 천천히 오르고, 이후에 먹는 밥의 소화 흡수 속도를 늦춰줍니다.</li>
+    <li><strong style="color:var(--text)">단백질 반찬 다음</strong> — 고기, 생선, 두부 등 단백질 반찬으로 포만감을 높이고 필수 아미노산을 보충합니다.</li>
+    <li><strong style="color:var(--text)">국·찌개는 중간중간</strong> — 국물은 소화를 돕지만 너무 많이 마시면 나트륨 과잉 섭취로 이어질 수 있습니다. 건더기 위주로 드세요.</li>
+    <li><strong style="color:var(--text)">밥은 마지막으로</strong> — 반찬을 어느 정도 먹은 후 밥을 먹으면 적당량에서 포만감을 느껴 과식을 예방합니다.</li>
+    <li><strong style="color:var(--text)">우유는 식후에</strong> — 식후 우유는 식사에서 부족한 칼슘을 보충하는 완벽한 타이밍입니다. 남기지 마세요!</li>
+  </ul>
+
+  <!-- 음식 낭비 -->
+  <h2 class="section-title">음식 낭비 줄이기</h2>
+  <div class="highlight-box">
+    <h3>📊 알고 계셨나요?</h3>
+    <p>전국 학교 급식에서 하루 발생하는 음식물 쓰레기는 약 <strong style="color:var(--text)">5,000톤</strong>에 달합니다. 음식 1kg을 만드는 데 필요한 물은 약 <strong style="color:var(--text)">15,000리터</strong>입니다. 조금만 남기지 않아도 큰 차이를 만들 수 있어요.</p>
+  </div>
+
+  <div class="tip-row">
+    <div class="tip-emoji">🍚</div>
+    <div class="tip-content">
+      <strong>먹을 만큼만 받기</strong>
+      <p>배식을 받을 때 먹을 수 있는 양만큼만 요청하세요. 처음에 조금 받고 부족하면 더 받는 방식이 잔반을 줄이는 가장 효과적인 방법입니다.</p>
+    </div>
+  </div>
+  <div class="tip-row">
+    <div class="tip-emoji">🥦</div>
+    <div class="tip-content">
+      <strong>편식 극복하기</strong>
+      <p>싫어하는 채소도 소량씩 천천히 경험하면 미각이 적응됩니다. 채소는 맛보다 영양 섭취가 목적임을 기억하고, 한 번에 많이 줄이기보다는 조금씩 시도해 보세요.</p>
+    </div>
+  </div>
+  <div class="tip-row">
+    <div class="tip-emoji">⏱️</div>
+    <div class="tip-content">
+      <strong>충분한 식사 시간 확보</strong>
+      <p>급하게 먹으면 실제 포만감을 느끼기 전에 과식하게 됩니다. 포만 신호는 식사 시작 후 약 20분 뒤에 뇌에 도달합니다. 천천히, 꼭꼭 씹어 드세요.</p>
+    </div>
+  </div>
+
+  <!-- DO vs DONT -->
+  <h2 class="section-title">급식실에서 지켜야 할 것 vs 삼가야 할 것</h2>
+  <div class="good-bad">
+    <div class="good">
+      <h3>✅ 이렇게 해요</h3>
+      <ul>
+        <li>국물보다 건더기 위주로 먹기</li>
+        <li>채소 반찬 남기지 않기</li>
+        <li>우유 끝까지 마시기</li>
+        <li>식판에 흘리지 않게 조심하기</li>
+        <li>식사 후 깨끗이 뒷정리하기</li>
+        <li>음식 이름이나 재료에 관심 갖기</li>
+      </ul>
+    </div>
+    <div class="bad">
+      <h3>❌ 이건 삼가요</h3>
+      <ul>
+        <li>음식 가지고 장난치기</li>
+        <li>음식을 억지로 먹이거나 강요하기</li>
+        <li>줄 새치기</li>
+        <li>음식에 대해 부정적으로 말하기</li>
+        <li>스마트폰 보면서 식사하기</li>
+        <li>배식 중 식판 흔들거리기</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 영양 균형 -->
+  <h2 class="section-title">균형 잡힌 식판 구성법</h2>
+  <table>
+    <thead><tr><th>식판 구역</th><th>권장 식품</th><th>1회 적정량</th><th>주의 사항</th></tr></thead>
+    <tbody>
+      <tr><td>밥 (주식)</td><td>백미·잡곡·현미밥</td><td>200~250g (어른 주먹 크기)</td><td>다이어트 목적으로 밥을 극단적으로 줄이면 집중력 저하</td></tr>
+      <tr><td>국/찌개</td><td>된장국, 미역국, 김치찌개</td><td>1/2그릇 이하</td><td>국물 나트륨 주의 — 건더기 위주로 섭취</td></tr>
+      <tr><td>주 반찬</td><td>고기, 생선, 두부, 달걀류</td><td>손바닥 절반 크기</td><td>튀김류는 주 2회 이내 권장</td></tr>
+      <tr><td>부 반찬 1</td><td>김치, 깍두기 등 발효 식품</td><td>2~3큰술</td><td>나트륨 함량이 높으니 과다 섭취 주의</td></tr>
+      <tr><td>부 반찬 2</td><td>나물, 볶음, 무침 채소</td><td>가득 (남기지 않기)</td><td>채소 반찬은 아무리 먹어도 OK</td></tr>
+      <tr><td>우유/후식</td><td>급식 우유, 과일</td><td>1팩 / 1회 제공량</td><td>우유 알레르기 학생은 영양 교사에게 대체 신청</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 학부모 안내 -->
+  <h2 class="section-title">학부모님을 위한 안내</h2>
+  <div class="tip-row">
+    <div class="tip-emoji">📱</div>
+    <div class="tip-content">
+      <strong>급식 식단 미리 확인하기</strong>
+      <p>이 포털 서비스를 활용해 자녀 학교의 주간 식단을 미리 확인하세요. 알레르기 유발 식품이 포함된 날에는 학교에 미리 안내하거나 대체 급식을 신청할 수 있습니다.</p>
+    </div>
+  </div>
+  <div class="tip-row">
+    <div class="tip-emoji">🏫</div>
+    <div class="tip-content">
+      <strong>알레르기 정보 학교에 전달</strong>
+      <p>자녀에게 식품 알레르기가 있다면 학기 초에 반드시 담임 교사와 학교 영양 교사에게 서면으로 알려주세요. 학교는 알레르기 대체 식품을 제공할 의무가 있습니다.</p>
+    </div>
+  </div>
+  <div class="tip-row">
+    <div class="tip-emoji">🍱</div>
+    <div class="tip-content">
+      <strong>가정에서도 급식 식습관 연장</strong>
+      <p>학교에서 배운 식판 구성법과 채소 섭취 습관을 가정 식사에도 이어가면 더욱 효과적입니다. 아이가 먹은 급식 메뉴에 관심을 갖고 대화해 보세요.</p>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:60px">
+    <a href="app.html" style="display:inline-block; background:linear-gradient(135deg,#4a80f5,#9b5de5); color:#fff; padding:14px 30px; border-radius:12px; font-weight:700; font-size:15px; margin-bottom:14px;">🍽️ 오늘의 급식 바로 보기</a>
+    <br/>
+    <a href="allergy.html" style="display:inline-block; color:var(--muted); font-size:14px; margin-top:10px; text-decoration:underline;">알레르기 완전 정복 가이드 →</a>
+  </div>
+</main>
+
+<footer>
+  <a href="index.html">홈</a> &nbsp;|&nbsp; <a href="app.html">오늘의 급식</a> &nbsp;|&nbsp; <a href="nutrition.html">영양 가이드</a> &nbsp;|&nbsp; <a href="allergy.html">알레르기 정보</a> &nbsp;|&nbsp; <a href="privacy.html">개인정보처리방침</a>
+</footer>
+</body>
+</html>
